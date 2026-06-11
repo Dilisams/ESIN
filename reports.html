@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Reports — ESIN Water Intelligence</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<nav id="mainNav">
+  <a href="index.html" class="nav-brand">
+    <span class="nav-wordmark">E<span>SIN</span></span>
+  </a>
+  <button id="navToggle" class="nav-toggle" aria-label="Open menu"><span></span></button>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="reports.html">Reports</a>
+    <a href="hubs.html">Water Hubs</a>
+    <a href="tankers.html">Tankers</a>
+  </div>
+  <div class="nav-cta">
+    <a class="btn btn-primary btn-sm" href="index.html">Home</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-orb hero-orb-1"></div>
+  <div class="hero-orb hero-orb-2"></div>
+
+  <div class="hero-badge">
+    <span class="badge-dot"></span>
+    Reports & Analytics · Enugu State
+  </div>
+
+  <h1 class="hero-headline">
+    Water Complaints &<br>Analytics Intelligence
+  </h1>
+  <p class="hero-sub">
+    Track reports, monitor supply status, and keep the Ministry updated with live water intelligence and incident analytics.
+  </p>
+  <div class="hero-actions">
+    <a class="btn btn-primary btn-lg" href="#dashboard">View Analytics</a>
+    <a class="btn btn-ghost btn-lg" href="#complaints">File a Complaint</a>
+  </div>
+</section>
+
+<section class="dashboard-section" id="dashboard">
+  <div class="section-eyebrow">Government Intelligence</div>
+  <h2 class="section-title">Reports & Analytics Dashboard</h2>
+  <p class="section-sub">A focused view for complaints, active alerts, and response planning across the state water network.</p>
+
+  <div class="dash-grid">
+    <div class="dash-card">
+      <div class="dash-card-label">Daily Output (Litres)</div>
+      <div class="dash-card-val" id="cnt1">0</div>
+      <div class="dash-card-delta delta-up">▲ 4.2% vs yesterday</div>
+    </div>
+    <div class="dash-card">
+      <div class="dash-card-label">Hubs Online</div>
+      <div class="dash-card-val" id="cnt2">0</div>
+      <div class="dash-card-delta delta-up">▲ +12 this week</div>
+    </div>
+    <div class="dash-card">
+      <div class="dash-card-label">Shortage Reports</div>
+      <div class="dash-card-val" id="cnt3" style="color:var(--accent-red)">0</div>
+      <div class="dash-card-delta delta-down">▼ 8 unresolved</div>
+    </div>
+    <div class="dash-card">
+      <div class="dash-card-label">PPP Partners Active</div>
+      <div class="dash-card-val" id="cnt4">0</div>
+      <div class="dash-card-delta delta-up">▲ 3 pending approval</div>
+    </div>
+  </div>
+
+  <div class="dash-charts">
+    <div class="chart-box">
+      <h4>Daily Water Distribution — Last 14 Days</h4>
+      <canvas id="distChart" height="160"></canvas>
+    </div>
+    <div class="chart-box">
+      <h4>Supply Status by Zone</h4>
+      <canvas id="zoneChart" height="180"></canvas>
+    </div>
+  </div>
+</section>
+
+<section class="emergency-section">
+  <div class="section-eyebrow" style="color:var(--accent-red);">Emergency Response</div>
+  <h2 class="section-title">Active Shortage Alerts</h2>
+  <div class="alert-banner">
+    <div class="alert-content">
+      <div class="alert-title">Priority Intervention Required</div>
+      <div class="alert-desc">Critical water shortage alerts have been generated for Obiagu Hub 2 and GRA Phase 2. The state analytics dashboard is recommending emergency tanker dispatch and field response within 2.5 hours.</div>
+    </div>
+    <div class="alert-actions">
+      <button class="btn btn-primary btn-sm" onclick="showNotif(' Emergency tanker dispatch confirmed. 3 vehicles en route!','success')">Acknowledge</button>
+    </div>
+  </div>
+</section>
+
+<!-- =============================================
+     FEATURE 1: COMMUNITY REPORTS SECTION
+     ============================================= -->
+<section class="reports-section" id="community-reports">
+  <div class="section-eyebrow reveal">Citizen Intelligence</div>
+  <h2 class="section-title reveal">Community<br>Water Reports</h2>
+  <p class="section-sub reveal">Citizens report water issues directly to government field officers. Every report is tracked, prioritized, and resolved with full transparency.</p>
+
+  <div class="reports-hero">
+    <!-- Left: live feed + priority alert -->
+    <div class="reveal">
+      <!-- Smart Priority Alert -->
+      <div class="priority-alert-box">
+        <div class="pa-head">
+          <span class="pa-badge"> AI Priority Alert</span>
+        </div>
+        <div class="pa-title">Urgent Intervention Required — Abakpa Community</div>
+        <div class="pa-desc">14 reports in 6 hours. Repeated critical shortages. Nearby Hub EN-0007 at 34% and declining. High population density area.</div>
+        <div class="pa-meta">
+          <span class="pa-tag">14 Reports · 6 hrs</span>
+          <span class="pa-tag">Pop: 11,200</span>
+          <span class="pa-tag">Hub: 34%</span>
+        </div>
+      </div>
+
+      <!-- Report stats -->
+      <div class="reports-stats-row">
+        <div class="rstat-card danger">
+          <div class="rstat-val" id="rstatTotal">106</div>
+          <div class="rstat-label">Total Reports</div>
+        </div>
+        <div class="rstat-card warn">
+          <div class="rstat-val" id="rstatOpen">38</div>
+          <div class="rstat-label">Open Cases</div>
+        </div>
+        <div class="rstat-card ok">
+          <div class="rstat-val" id="rstatResolved">14</div>
+          <div class="rstat-label">Resolved Today</div>
+        </div>
+      </div>
+
+      <!-- Live report feed -->
+      <div class="report-feed">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:4px;">
+          <span style="font-size:12px;font-weight:700;color:var(--ink-60);text-transform:uppercase;letter-spacing:0.5px;">Live Report Feed</span>
+          <span class="live-badge"><span class="live-dot"></span>LIVE</span>
+        </div>
+
+        <div class="report-feed-item">
+          <div class="rfi-icon critical">💧</div>
+          <div class="rfi-content">
+            <div class="rfi-title">No water supply — 3rd consecutive day</div>
+            <div class="rfi-meta">
+              <span> Abakpa Ward 7</span>
+              <span> Chukwuemeka O.</span>
+              <span> 8 min ago</span>
+            </div>
+          </div>
+          <div class="rfi-right">
+            <span class="severity-pill sev-critical">Critical</span>
+            <span class="report-status-pill rs-review">Under Review</span>
+          </div>
+        </div>
+
+        <div class="report-feed-item">
+          <div class="rfi-icon critical">🔴</div>
+          <div class="rfi-content">
+            <div class="rfi-title">Dirty/discolored water from community tap</div>
+            <div class="rfi-meta">
+              <span> GRA Phase 2</span>
+              <span> Anonymous</span>
+              <span> 22 min ago</span>
+            </div>
+          </div>
+          <div class="rfi-right">
+            <span class="severity-pill sev-high">High</span>
+            <span class="report-status-pill rs-verified">Verified</span>
+          </div>
+        </div>
+
+        <div class="report-feed-item">
+          <!-- <div class="rfi-icon high">🔧</div> -->
+          <div class="rfi-content">
+            <div class="rfi-title">Burst water pipe — Ogui Road junction</div>
+            <div class="rfi-meta">
+              <span> Enugu North</span>
+              <span>👤 Ngozi A.</span>
+              <span>⏱ 41 min ago</span>
+            </div>
+          </div>
+          <div class="rfi-right">
+            <span class="severity-pill sev-high">High</span>
+            <span class="report-status-pill rs-inprogress">In Progress</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right: info panel -->
+    <div class="reveal">
+      <!-- Categories -->
+      <div class="rip-card">
+        <h4> Report Categories</h4>
+        <div class="category-list">
+          <div class="cat-item"> Water Supply Issues <span class="cat-count">34</span></div>
+          <div class="cat-item"> Water Quality <span class="cat-count">18</span></div>
+          <div class="cat-item"> Infrastructure Damage <span class="cat-count">27</span></div>
+          <div class="cat-item"> Distribution Problems <span class="cat-count">12</span></div>
+          <div class="cat-item"> Illegal Activities <span class="cat-count">6</span></div>
+          <div class="cat-item"> Billing / Metering <span class="cat-count">9</span></div>
+        </div>
+      </div>
+
+      <!-- Submit CTA -->
+      <div>
+        <button class="btn btn-primary" style="width:100%;justify-content:center;padding:14px;" onclick="esinNotif('📋 Fill out the form below to submit your report','info')">
+           Submit a New Water Report
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =============================================
+     FEATURE 1b: REPORT SUBMISSION FORM SECTION
+     ============================================= -->
+<section class="report-form-section" id="submit-report">
+  <div class="section-eyebrow reveal">Citizen Platform</div>
+  <h2 class="section-title reveal">Submit a Water<br>Issue Report</h2>
+  <p class="section-sub reveal">Reports go directly to the ESIN government dashboard and are assigned to field officers within minutes. Critical reports auto-escalate.</p>
+
+  <div class="report-form-wrap">
+    <!-- Form info panel -->
+    <div class="report-info-panel reveal">
+      <div class="rip-card">
+        <h4>ℹ️ Before You Report</h4>
+        <div style="display:flex;flex-direction:column;gap:10px;font-size:13px;color:var(--ink-60);line-height:1.6;">
+          <p>Your report is immediately logged in the ESIN government dashboard and assigned a tracking ID.</p>
+          <p>Critical and High severity reports are automatically escalated to the nearest field officer within 15 minutes.</p>
+          <p>You can submit anonymously — we only need your location to respond effectively.</p>
+          <p>Average response time: <strong style="color:var(--royal);">4.2 hours</strong></p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Report Form Card -->
+    <div class="report-form-card reveal">
+      <!-- Anonymous toggle -->
+      <div class="anon-toggle" style="margin-bottom:20px;">
+        <div class="anon-toggle-label">
+          <div>
+            <div style="font-size:13px;font-weight:700;color:var(--ink);">Submit Anonymously</div>
+            <div style="font-size:11px;color:var(--ink-60);">Your identity will not be shared</div>
+          </div>
+        </div>
+        <div class="toggle-switch" id="anonToggle" onclick="toggleAnon()"></div>
+      </div>
+
+      <div id="identityFields">
+        <div class="form-section-title">Your Details</div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Full Name</label>
+            <input class="form-input" type="text" placeholder="e.g. Chukwu Emeka"/>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Phone Number</label>
+            <input class="form-input" type="tel" placeholder="+234 800 000 0000"/>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-section-title">Location</div>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">Community / Area</label>
+          <input class="form-input" type="text" placeholder="e.g. Abakpa Nike"/>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Local Government Area</label>
+          <select class="form-input" id="reportLGA">
+            <option value="">Select LGA</option>
+            <option>Enugu North</option>
+            <option>Enugu South</option>
+            <option>Enugu East</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-section-title">Issue Details</div>
+      <div class="form-group" style="margin-bottom:12px;">
+        <label class="form-label">Report Category</label>
+        <select class="form-input" id="reportCategory">
+          <option value="">Select Category</option>
+          <option>No water supply</option>
+          <option>Dirty water</option>
+          <option>Damaged pipes</option>
+          <option>Tanker delay</option>
+        </select>
+      </div>
+
+      <div class="form-group" style="margin-bottom:12px;">
+        <label class="form-label">Severity Level</label>
+        <div class="severity-selector">
+          <div class="sev-opt low-opt" onclick="selectSeverity(this,'Low')">🟢 Low</div>
+          <div class="sev-opt medium-opt sev-selected" onclick="selectSeverity(this,'Medium')">🔵 Medium</div>
+          <div class="sev-opt high-opt" onclick="selectSeverity(this,'High')">🟡 High</div>
+          <div class="sev-opt critical-opt" onclick="selectSeverity(this,'Critical')">🔴 Critical</div>
+        </div>
+      </div>
+
+      <div class="form-group" style="margin-bottom:12px;">
+        <label class="form-label">Description of Issue</label>
+        <textarea class="form-input" placeholder="Describe the water problem in detail..."></textarea>
+      </div>
+
+      <button class="btn btn-primary" style="width:100%;justify-content:center;padding:14px;font-size:15px;" onclick="submitReport()">
+         Submit Report to ESIN Dashboard
+      </button>
+    </div>
+  </div>
+</section>
+
+<section id="complaints" style="background:var(--sky);padding:96px 5vw;">
+  <div class="section-eyebrow">Water Complaints</div>
+  <h2 class="section-title">Report a Water Issue</h2>
+  <p class="section-sub">Submit shortage reports, quality issues, or infrastructure damage directly to the Enugu State water team.</p>
+  <div class="enugu-map-container" style="background:#fff;box-shadow:var(--shadow-card);border:1px solid var(--sky-mid);padding:28px;">
+    <div class="report-form">
+      <div class="form-group">
+        <label class="form-label">Issue Type</label>
+        <div class="radio-group" id="issueTypeGroup">
+          <div class="radio-opt sel" onclick="selectRadio(this,'issueTypeGroup')">No Water Supply</div>
+          <div class="radio-opt" onclick="selectRadio(this,'issueTypeGroup')">Low Pressure</div>
+          <div class="radio-opt" onclick="selectRadio(this,'issueTypeGroup')">Water Quality</div>
+          <div class="radio-opt" onclick="selectRadio(this,'issueTypeGroup')">Infrastructure Damage</div>
+          <div class="radio-opt" onclick="selectRadio(this,'issueTypeGroup')">Hub Offline</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Location</label>
+        <input class="form-input" type="text" placeholder="Street, Ward, LGA" />
+      </div>
+      <div class="form-group">
+        <label class="form-label">Description</label>
+        <textarea class="form-input" placeholder="Describe the issue..."></textarea>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Contact Number</label>
+        <input class="form-input" type="tel" placeholder="+234..." />
+      </div>
+      <button class="btn btn-primary" style="justify-content:center;" onclick="showNotif('Report logged. Field officer notified!','success')">Submit Report</button>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <div class="nav-brand" style="text-decoration:none;display:inline-flex;margin-bottom:8px;">
+
+        <span class="nav-wordmark" style="color:#fff;margin-left:10px;">E<span>SIN</span></span>
+      </div>
+      <p>Water complaints and analytics in one place — built for Enugu State water managers and field teams.</p>
+    </div>
+    <div class="footer-links">
+      <div class="footer-col">
+        <h5>Navigation</h5>
+        <a href="index.html">Home</a>
+        <a href="hubs.html">Water Hubs</a>
+        <a href="tankers.html">Tankers</a>
+      </div>
+      <div class="footer-col">
+        <h5>Support</h5>
+        <a href="#complaints">Submit Report</a>
+        <a href="#dashboard">Dashboard</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2026 ESIN — Enugu Smart Intelligence Network.</div>
+  </div>
+</footer>
+
+<div class="notif" id="notifEl">
+  <span class="notif-icon" id="notifIcon">✅</span>
+  <span id="notifMsg">Action completed</span>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

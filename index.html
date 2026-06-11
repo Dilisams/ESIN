@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>ESIN — Enugu Smart Intelligence Network for Sustainable Water Access</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="styles.css" />
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+</head>
+<body>
+   <div class="loader" data-loader>
+      <div class="loader-mark"></div>
+      <p>Initializing ESIN intelligence...</p>
+    </div>
+
+<!-- NAV -->
+<nav id="mainNav">
+  <a href="index.html" class="nav-brand">
+    <span class="nav-wordmark">E<span>SIN</span></span>
+  </a>
+  <button id="navToggle" class="nav-toggle" aria-label="Open menu"><span></span></button>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="reports.html">Reports</a>
+    <a href="hubs.html">Water Hubs</a>
+    <a href="tankers.html">Tankers</a>
+  </div>
+  <div class="nav-cta">
+    <button class="btn btn-primary btn-sm" onclick="openDashboard()">View Dashboard</button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-orb hero-orb-1"></div>
+  <div class="hero-orb hero-orb-2"></div>
+
+  <div class="hero-badge">
+    <span class="badge-dot"></span>
+    Live Intelligence System - Enugu State, Nigeria
+  </div>
+
+  <h1 class="hero-headline">
+    Reimagining<br><em>Water Access</em><br>for <span>Enugu State</span>
+  </h1>
+  <p class="hero-sub">
+    A state-level water intelligence, planning, monitoring, and coordination system — bringing data-driven precision to every drop distributed across Enugu's communities.
+  </p>
+  <div class="hero-actions">
+    <button class="btn btn-primary btn-lg" onclick="openDashboard()">
+      View Dashboard
+    </button>
+    <button class="btn btn-ghost btn-lg" onclick="scrollToMap()">
+      View Live Water Map
+    </button>
+  </div>
+  <div class="hero-stats">
+    <div class="hero-stat-item">
+      <div class="stat-val" data-count="4.7">0<span>M+</span></div>
+      <div class="stat-label">Enugu State Residents</div>
+    </div>
+    <div class="hero-stat-item">
+      <div class="stat-val" data-count="17">0<span></span></div>
+      <div class="stat-label">LGAs Monitored</div>
+    </div>
+    <div class="hero-stat-item">
+      <div class="stat-val" data-count="312">0<span></span></div>
+      <div class="stat-label">Water Hubs Tracked</div>
+    </div>
+    <div class="hero-stat-item">
+      <div class="stat-val" data-count="89">0<span>%</span></div>
+      <div class="stat-label">Supply Forecast Accuracy</div>
+    </div>
+  </div>
+
+  <!-- Hero Visual — Dashboard Preview -->
+  <div class="hero-visual">
+    <div style="background:rgba(15,82,186,0.06);border:1px solid rgba(15,82,186,0.15);border-radius:20px;padding:20px;backdrop-filter:blur(10px);">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;">
+        <span style="font-family:var(--font-head);font-size:13px;font-weight:700;color:var(--royal);">State Water Intelligence</span>
+        <span class="live-badge"><span class="live-dot"></span>LIVE</span>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px;">
+        <div style="background:#fff;border-radius:10px;padding:14px;box-shadow:var(--shadow-card);">
+          <div style="font-size:10px;color:var(--ink-60);margin-bottom:6px;font-weight:600;">ACTIVE HUBS</div>
+          <div style="font-family:var(--font-head);font-size:1.6rem;font-weight:800;color:var(--ink);">295<span style="font-size:.8rem;color:var(--accent-green);margin-left:4px;">+</span></div>
+        </div>
+        <div style="background:#fff;border-radius:10px;padding:14px;box-shadow:var(--shadow-card);">
+          <div style="font-size:10px;color:var(--ink-60);margin-bottom:6px;font-weight:600;">CRITICAL ZONES</div>
+          <div style="font-family:var(--font-head);font-size:1.6rem;font-weight:800;color:var(--accent-red);">5</div>
+        </div>
+      </div>
+      <canvas id="heroChart" height="90"></canvas>
+    </div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker-wrap">
+  <div class="ticker" id="tickerInner">
+    <span class="ticker-item">Uwani Hub — Operational — 78% Capacity</span>
+    <span class="ticker-item">Abakpa Main — Limited Supply — 34%</span>
+    <span class="ticker-item">New Haven Hub 3 — CRITICAL — 8%</span>
+    <span class="ticker-item">Ninth Mile Reservoir — Supplying 3 Hubs</span>
+    <span class="ticker-item">Independence Layout — Tanker Dispatch Requested</span>
+    <span class="ticker-item">Agbani Road Hub — Operational — 91%</span>
+    <span class="ticker-item">Obiagu — Shortage Alert — Population 12,400</span>
+    <span class="ticker-item">Enugu East — Supply Restored</span>
+    <span class="ticker-item">Coal Camp — Maintenance Scheduled</span>
+    <span class="ticker-item">GRA Phase 2 — Emergency Supply Needed</span>
+  </div>
+  <div class="ticker" id="tickerInner2" aria-hidden="true">
+    <span class="ticker-item">Uwani Hub — Operational — 78% Capacity</span>
+    <span class="ticker-item">Abakpa Main — Limited Supply — 34%</span>
+    <span class="ticker-item">New Haven Hub 3 — CRITICAL — 8%</span>
+    <span class="ticker-item">Ninth Mile Reservoir — Supplying 3 Hubs</span>
+    <span class="ticker-item">Independence Layout — Tanker Dispatch Requested</span>
+    <span class="ticker-item">Agbani Road Hub — Operational — 91%</span>
+    <span class="ticker-item">Obiagu — Shortage Alert — Population 12,400</span>
+    <span class="ticker-item">Enugu East — Supply Restored</span>
+    <span class="ticker-item">Coal Camp — Maintenance Scheduled</span>
+    <span class="ticker-item">GRA Phase 2 — Emergency Supply Needed</span>
+  </div>
+</div>
+
+<!-- SOLUTION -->
+<section id="solution" class="section-sky">
+  <div class="section-eyebrow reveal">The ESIN Model</div>
+  <h2 class="section-title reveal">One Platform.<br>Total Water Intelligence.</h2>
+  <div class="solution-wrap">
+    <div class="solution-modules reveal">
+      <div class="module-item">
+        <div class="module-icon module-icon-map"></div>
+        <div>
+          <h4>Live Water Intelligence Map</h4>
+          <p>Real-time state-wide map of every hub, reservoir, and supply zone with stress scoring and shortage alerts.</p>
+        </div>
+      </div>
+      <div class="module-item">
+        <div class="module-icon module-icon-hubs"></div>
+        <div>
+          <h4>Community Water Hub System</h4>
+          <p>Decentralized hub management — tank levels, schedules, maintenance, and population analytics in one view.</p>
+        </div>
+      </div>
+      <div class="module-item">
+        <div class="module-icon module-icon-ppp"></div>
+        <div>
+          <h4>PPP Supplier Network</h4>
+          <p>Formal onboarding and monitoring of private water operators — tankers, boreholes, reservoirs — with compliance metrics.</p>
+        </div>
+      </div>
+      <div class="module-item">
+        <div class="module-icon module-icon-meter"></div>
+        <div>
+          <h4>Smart Metering System</h4>
+          <p>Digital pay-as-you-use metering with leak detection, consumption forecasting, and affordability safeguards.</p>
+        </div>
+      </div>
+      <div class="module-item">
+        <div class="module-icon module-icon-emergency"></div>
+        <div>
+          <h4>Emergency Response Engine</h4>
+          <p>AI-driven shortage detection auto-generates priority alerts and routes tankers to critical zones.</p>
+        </div>
+      </div>
+      <div class="module-item">
+        <div class="module-icon module-icon-app"></div>
+        <div>
+          <h4>Citizen Water Access App</h4>
+          <p>Residents find nearest supply, check availability, report shortages, and request emergency deliveries.</p>
+        </div>
+      </div>
+    </div>
+    <div class="reveal" style="text-align:center;">
+      <canvas id="solutionChart" width="320" height="320"></canvas>
+      <p style="font-size:12px;color:var(--ink-60);margin-top:12px;">Water Access Coverage — State Average</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="section-eyebrow">Ready to Deploy</div>
+  <h2 class="cta-title">Start the Enugu<br>Water Revolution</h2>
+  <p class="cta-sub">ESIN is ready for pilot deployment. Engage the Ministry of Water Resources or your LGA water authority to begin integration.</p>
+  <div class="cta-buttons">
+    <button class="btn btn-primary btn-lg" onclick="openDashboard()">Launch Dashboard</button>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <div class="nav-brand" style="text-decoration:none;display:inline-flex;margin-bottom:8px;">
+        <span class="nav-wordmark" style="color:#fff;margin-left:10px;">E<span>SIN</span></span>
+      </div>
+      <p>Enugu Smart Intelligence Network for Sustainable Water Access. A civic technology platform for the Enugu State Ministry of Water Resources.</p>
+    </div>
+    <div class="footer-links">
+      <div class="footer-col">
+        <h5>Platform</h5>
+        <a href="#">Water Intelligence</a>
+        <a href="#">Hub Management</a>
+        <a href="#">PPP Network</a>
+        <a href="#">Smart Metering</a>
+      </div>
+      <div class="footer-col">
+        <h5>Users</h5>
+        <a href="#">Government Admin</a>
+        <a href="#">Water Suppliers</a>
+        <a href="#">Hub Managers</a>
+        <a href="#">Citizens</a>
+      </div>
+      <div class="footer-col">
+        <h5>Resources</h5>
+        <a href="#">API Documentation</a>
+        <a href="#">Integration Guide</a>
+        <a href="#">Field Officer App</a>
+        <a href="#">Training Materials</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy">(c) 2026 ESIN — Enugu Smart Intelligence Network.</div>
+    <div class="footer-tags">
+      <span class="footer-tag">Node.js</span>
+      <span class="footer-tag">Firebase</span>
+      <span class="footer-tag">Chart.js</span>
+      <span class="footer-tag">Leaflet.js</span>
+      <span class="footer-tag">RBAC</span>
+    </div>
+  </div>
+</footer>
+
+<!-- NOTIFICATION -->
+<div class="notif" id="notifEl">
+  <span class="notif-icon" id="notifIcon">[OK]</span>
+  <span id="notifMsg">Action completed</span>
+</div>
+
+<!-- LOGIN MODAL -->
+<div class="modal-overlay" id="loginModal">
+  <div class="modal" style="max-width:460px;">
+    <div class="modal-header">
+      <span class="modal-title">Sign in to ESIN</span>
+      <button class="modal-close" onclick="closeModal('loginModal')">x</button>
+    </div>
+    <div class="modal-body">
+      <div class="login-form">
+        <div style="font-size:13px;color:var(--ink-60);margin-bottom:4px;">Select your role to continue</div>
+        <div class="role-grid" id="roleGrid">
+          <div class="role-option selected" onclick="selectRole(this)">Government Admin</div>
+          <div class="role-option" onclick="selectRole(this)">Water Supplier</div>
+          <div class="role-option" onclick="selectRole(this)">Hub Manager</div>
+          <div class="role-option" onclick="selectRole(this)">Citizen</div>
+          <div class="role-option" onclick="selectRole(this)">Field Officer</div>
+          <div class="role-option" onclick="selectRole(this)">Analyst</div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Email Address</label>
+          <input class="form-input" type="email" placeholder="your@gov.ng" value="admin@enwaterboard.gov.ng"/>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Password</label>
+          <input class="form-input" type="password" placeholder="........" value="........"/>
+        </div>
+        <button class="btn btn-primary" style="justify-content:center;width:100%;" onclick="handleLogin()">Sign In to Dashboard</button>
+        <div style="text-align:center;font-size:12px;color:var(--ink-60);">Demo mode — credentials pre-filled for preview</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- GOVERNMENT DASHBOARD MODAL -->
+<div class="modal-overlay" id="govDashModal">
+  <div class="modal">
+    <div class="modal-header">
+      <div style="display:flex;align-items:center;gap:12px;">
+        <div class="nav-logo" style="width:32px;height:32px;font-size:13px;">E</div>
+        <div>
+          <span class="modal-title">Enugu's Smart Intelligence Network Water Dashboard</span>
+          <div style="font-size:11px;color:var(--ink-60);">Ministry of Water Resources - Enugu State - <span class="live-badge" style="display:inline-flex;padding:2px 8px;font-size:10px;"><span class="live-dot"></span>LIVE</span></div>
+        </div>
+      </div>
+      <button class="modal-close" onclick="closeModal('govDashModal')">x</button>
+    </div>
+    <div class="modal-body">
+      <div class="gov-dash">
+        <div class="kpi-row">
+          <div class="kpi-card"><div class="kpi-label">Daily Output</div><div class="kpi-val">2.76M L</div><div class="kpi-sub">+ 4.2% vs yesterday</div></div>
+          <div class="kpi-card"><div class="kpi-label">Hubs Online</div><div class="kpi-val">287/312</div><div class="kpi-sub">92% availability</div></div>
+          <div class="kpi-card"><div class="kpi-label">Active Alerts</div><div class="kpi-val" style="color:var(--accent-red);">7</div><div class="kpi-sub" style="color:var(--accent-red);">2 critical</div></div>
+          <div class="kpi-card"><div class="kpi-label">Population Served</div><div class="kpi-val">3.1M</div><div class="kpi-sub">67% of state</div></div>
+        </div>
+        <div class="charts-row">
+          <div class="chart-panel">
+            <h4>14-Day Water Distribution Trend</h4>
+            <canvas id="modalMainChart" height="180"></canvas>
+          </div>
+          <div class="chart-panel">
+            <h4>Zone Status Breakdown</h4>
+            <canvas id="modalZoneChart" height="180"></canvas>
+            <div style="display:flex;flex-direction:column;gap:6px;margin-top:10px;">
+              <div style="display:flex;align-items:center;gap:8px;font-size:11px;"><div style="width:10px;height:10px;border-radius:50%;background:var(--accent-green)"></div>Stable (8 zones)</div>
+              <div style="display:flex;align-items:center;gap:8px;font-size:11px;"><div style="width:10px;height:10px;border-radius:50%;background:var(--accent-yellow)"></div>Limited (5 zones)</div>
+              <div style="display:flex;align-items:center;gap:8px;font-size:11px;"><div style="width:10px;height:10px;border-radius:50%;background:var(--accent-red)"></div>Critical (4 zones)</div>
+            </div>
+          </div>
+        </div>
+        <div class="chart-panel">
+          <h4>Supply vs Demand by LGA — Today</h4>
+          <canvas id="modalLgaChart" height="150"></canvas>
+        </div>
+        <div>
+          <div style="font-size:12px;font-weight:700;color:var(--ink-60);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:10px;">Live Alerts</div>
+          <div class="alert-list">
+            <div class="alert-item critical"><span class="alert-dot dot-red"></span><div class="alert-text"><strong>CRITICAL:</strong> Obiagu Hub 2 — Tank at 6%. 12,400 at risk.</div><span class="alert-time">12 min</span></div>
+            <div class="alert-item critical"><span class="alert-dot dot-red"></span><div class="alert-text"><strong>CRITICAL:</strong> GRA Phase 2 — No supply 3 days. Emergency needed.</div><span class="alert-time">28 min</span></div>
+            <div class="alert-item warning"><span class="alert-dot dot-yellow"></span><div class="alert-text"><strong>WARNING:</strong> New Haven Hub 3 — Pump failure. Team dispatched.</div><span class="alert-time">1 hr</span></div>
+          </div>
+        </div>
+        <div style="text-align:center;padding-top:8px;border-top:1px solid var(--ink-20);"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PPP PORTAL MODAL -->
+<div class="modal-overlay" id="pppModal">
+  <div class="modal" style="max-width:560px;">
+    <div class="modal-header">
+      <span class="modal-title">Register as Water Supplier</span>
+      <button class="modal-close" onclick="closeModal('pppModal')">x</button>
+    </div>
+    <div class="modal-body">
+      <div style="font-size:13px;color:var(--ink-60);margin-bottom:20px;line-height:1.6;">Join the ESIN PPP Water Supplier Network. Complete this form to apply for registration as a licensed water partner with the Enugu State Government.</div>
+      <div style="display:flex;flex-direction:column;gap:14px;">
+        <div class="form-group">
+          <label class="form-label">Organization Name</label>
+          <input class="form-input" type="text" placeholder="e.g. Enugu AquaSupply Ltd"/>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Supplier Type</label>
+          <div class="radio-group" id="supplierTypeGroup">
+            <div class="radio-opt sel" onclick="selectRadio(this,'supplierTypeGroup')">Reservoir Owner</div>
+            <div class="radio-opt" onclick="selectRadio(this,'supplierTypeGroup')">Tanker Operator</div>
+            <div class="radio-opt" onclick="selectRadio(this,'supplierTypeGroup')">Borehole Operator</div>
+            <div class="radio-opt" onclick="selectRadio(this,'supplierTypeGroup')">Treatment Facility</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Daily Supply Capacity (Litres)</label>
+          <input class="form-input" type="number" placeholder="e.g. 500000"/>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Operating LGA(s)</label>
+          <input class="form-input" type="text" placeholder="e.g. Enugu North, Enugu East"/>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Business Registration Number</label>
+          <input class="form-input" type="text" placeholder="CAC Number"/>
+        </div>
+        <button class="btn btn-primary" style="justify-content:center;" onclick="showNotif('PPP application submitted! Review within 48 hrs.','success');closeModal('pppModal')">Submit Application</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- REPORT MODAL -->
+<div class="modal-overlay" id="reportModal">
+  <div class="modal" style="max-width:500px;">
+    <div class="modal-header">
+      <span class="modal-title">Report Water Issue</span>
+      <button class="modal-close" onclick="closeModal('reportModal')">x</button>
+    </div>
+    <div class="modal-body">
+      <div class="report-form">
+        <div class="form-group">
+          <label class="form-label">Issue Type</label>
+          <div class="radio-group" id="issueTypeGroup">
+            <div class="radio-opt sel" onclick="selectRadio(this,'issueTypeGroup')">No Water Supply</div>
+            <div class="radio-opt" onclick="selectRadio(this,'issueTypeGroup')">Low Pressure</div>
+            <div class="radio-opt" onclick="selectRadio(this,'issueTypeGroup')">Water Quality</div>
+            <div class="radio-opt" onclick="selectRadio(this,'issueTypeGroup')">Infrastructure Damage</div>
+            <div class="radio-opt" onclick="selectRadio(this,'issueTypeGroup')">Hub Offline</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Location</label>
+          <input class="form-input" type="text" placeholder="Street, Ward, LGA"/>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Description</label>
+          <textarea class="form-input" placeholder="Describe the issue..."></textarea>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Contact Number</label>
+          <input class="form-input" type="tel" placeholder="+234..."/>
+        </div>
+        <button class="btn btn-primary" style="justify-content:center;" onclick="showNotif('Report logged. Field officer notified!','success');closeModal('reportModal')">Submit Report</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

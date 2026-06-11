@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Water Hubs — ESIN</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<nav id="mainNav">
+  <a href="index.html" class="nav-brand">
+    <span class="nav-wordmark">E<span>SIN</span></span>
+  </a>
+  <button id="navToggle" class="nav-toggle" aria-label="Open menu"><span></span></button>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="reports.html">Reports</a>
+    <a href="hubs.html">Water Hubs</a>
+    <a href="tankers.html">Tankers</a>
+  </div>
+  <div class="nav-cta">
+    <a class="btn btn-primary btn-sm" href="#map">Live Map</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-orb hero-orb-1"></div>
+  <div class="hero-orb hero-orb-2"></div>
+
+  <div class="hero-badge">
+    <span class="badge-dot"></span>
+    Community Water Hubs · Live Monitoring
+  </div>
+
+  <h1 class="hero-headline">
+    Track Water Hubs<br>Across Enugu State
+  </h1>
+  <p class="hero-sub">
+    Detailed hub status, tank levels, and live supply conditions for every community distribution point.
+  </p>
+  <div class="hero-actions">
+    <a class="btn btn-primary btn-lg" href="#map">View Live Map</a>
+    <a class="btn btn-ghost btn-lg" href="#hubs">View Hubs</a>
+  </div>
+</section>
+
+<section class="map-section" id="map">
+  <div class="section-eyebrow">Live Water Intelligence</div>
+  <h2 class="section-title">Enugu Water Hub Map</h2>
+  <p class="section-sub">Real-time status in every LGA, with critical field alerts and supply coverage shown on the state map.</p>
+
+  <div class="enugu-map-container">
+    <div class="map-toolbar">
+      <div class="map-filters">
+        <span style="font-size:12px;font-weight:600;color:var(--ink-60);margin-right:4px;">Filter:</span>
+        <button class="filter-chip green active" onclick="filterMap('all', this)">All Zones</button>
+        <button class="filter-chip green" onclick="filterMap('green', this)">🟢 Stable</button>
+        <button class="filter-chip yellow" onclick="filterMap('yellow', this)">🟡 Limited</button>
+        <button class="filter-chip red" onclick="filterMap('red', this)">🔴 Critical</button>
+        <button class="filter-chip blue" onclick="filterMap('blue', this)">🔵 Water-Rich</button>
+      </div>
+      <div class="map-legend">
+        <div class="legend-item"><div class="legend-dot" style="background:#00C48C"></div>Stable</div>
+        <div class="legend-item"><div class="legend-dot" style="background:#F5A623"></div>Limited</div>
+        <div class="legend-item"><div class="legend-dot" style="background:#E53E3E"></div>Critical</div>
+        <div class="legend-item"><div class="legend-dot" style="background:#0F52BA"></div>Water-Rich</div>
+      </div>
+    </div>
+    <div class="svg-map-wrap" style="position:relative;">
+      <div class="tooltip-map" id="mapTooltip"></div>
+      <svg viewBox="0 0 700 520" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-height:520px;">
+        <path d="M120,80 L200,60 L300,50 L420,70 L520,100 L580,160 L600,240 L580,330 L550,410 L500,460 L420,480 L340,490 L260,470 L180,440 L120,380 L80,300 L70,200 Z" fill="rgba(15,82,186,0.04)" stroke="rgba(15,82,186,0.15)" stroke-width="2" stroke-dasharray="6,4"/>
+        <g class="lga-node" data-lga="Enugu North" data-status="critical" data-score="85" data-supply="22%" onclick="lgaClick(this)">
+          <circle class="lga-circle" cx="300" cy="170" r="44" fill="rgba(229,62,62,0.15)" stroke="#E53E3E" stroke-width="2"/>
+          <circle cx="300" cy="170" r="28" fill="#E53E3E" opacity="0.85"/>
+          <text x="300" y="175" text-anchor="middle" fill="#fff" font-size="9" font-weight="700" font-family="Poppins,sans-serif">E. NORTH</text>
+          <circle cx="300" cy="170" r="44" fill="transparent">
+            <animate attributeName="r" values="44;54;44" dur="3s" repeatCount="indefinite"/>
+            <animate attributeName="opacity" values="0.3;0;0.3" dur="3s" repeatCount="indefinite"/>
+          </circle>
+        </g>
+        <g class="lga-node" data-lga="Enugu South" data-status="stable" data-score="32" data-supply="78%" onclick="lgaClick(this)">
+          <circle class="lga-circle" cx="300" cy="280" r="38" fill="rgba(0,196,140,0.15)" stroke="#00C48C" stroke-width="2"/>
+          <circle cx="300" cy="280" r="24" fill="#00C48C" opacity="0.85"/>
+          <text x="300" y="285" text-anchor="middle" fill="#fff" font-size="9" font-weight="700" font-family="Poppins,sans-serif">E. SOUTH</text>
+        </g>
+        <g class="lga-node" data-lga="Enugu East" data-status="critical" data-score="88" data-supply="14%" onclick="lgaClick(this)">
+          <circle class="lga-circle" cx="420" cy="200" r="36" fill="rgba(229,62,62,0.15)" stroke="#E53E3E" stroke-width="2"/>
+          <circle cx="420" cy="200" r="22" fill="#E53E3E" opacity="0.85"/>
+          <text x="420" y="205" text-anchor="middle" fill="#fff" font-size="9" font-weight="700" font-family="Poppins,sans-serif">E. EAST</text>
+          <circle cx="420" cy="200" r="36" fill="transparent">
+            <animate attributeName="r" values="36;46;36" dur="2.5s" repeatCount="indefinite"/>
+            <animate attributeName="opacity" values="0.3;0;0.3" dur="2.5s" repeatCount="indefinite"/>
+          </circle>
+        </g>
+        <g class="lga-node" data-lga="Ninth Mile / Udi" data-status="rich" data-score="8" data-supply="96%" onclick="lgaClick(this)">
+          <circle class="lga-circle" cx="200" cy="300" r="42" fill="rgba(15,82,186,0.15)" stroke="#0F52BA" stroke-width="2.5"/>
+          <circle cx="200" cy="300" r="26" fill="#0F52BA" opacity="0.9"/>
+          <text x="200" y="296" text-anchor="middle" fill="#fff" font-size="9" font-weight="700" font-family="Poppins,sans-serif">9TH MILE</text>
+          <text x="200" y="307" text-anchor="middle" fill="rgba(255,255,255,0.7)" font-size="8" font-family="Poppins,sans-serif">RESERVOIR</text>
+        </g>
+        <g class="lga-node" data-lga="Igbo-Eze North" data-status="limited" data-score="56" data-supply="44%" onclick="lgaClick(this)">
+          <circle class="lga-circle" cx="170" cy="160" r="32" fill="rgba(245,166,35,0.15)" stroke="#F5A623" stroke-width="2"/>
+          <circle cx="170" cy="160" r="20" fill="#F5A623" opacity="0.85"/>
+          <text x="170" y="165" text-anchor="middle" fill="#fff" font-size="8" font-weight="700" font-family="Poppins,sans-serif">IGE NORTH</text>
+        </g>
+        <g class="lga-node" data-lga="Igbo-Eze South" data-status="stable" data-score="28" data-supply="72%" onclick="lgaClick(this)">
+          <circle class="lga-circle" cx="160" cy="240" r="28" fill="rgba(0,196,140,0.15)" stroke="#00C48C" stroke-width="2"/>
+          <circle cx="160" cy="240" r="18" fill="#00C48C" opacity="0.85"/>
+          <text x="160" y="245" text-anchor="middle" fill="#fff" font-size="8" font-weight="700" font-family="Poppins,sans-serif">IGE SOUTH</text>
+        </g>
+        <g class="lga-node" data-lga="Nkanu East" data-status="limited" data-score="62" data-supply="38%" onclick="lgaClick(this)">
+          <circle class="lga-circle" cx="450" cy="330" r="30" fill="rgba(245,166,35,0.15)" stroke="#F5A623" stroke-width="2"/>
+          <circle cx="450" cy="330" r="19" fill="#F5A623" opacity="0.85"/>
+          <text x="450" y="335" text-anchor="middle" fill="#fff" font-size="8" font-weight="700" font-family="Poppins,sans-serif">NKANU E</text>
+        </g>
+        <g class="lga-node" data-lga="Nkanu West" data-status="stable" data-score="35" data-supply="67%" onclick="lgaClick(this)">
+          <circle class="lga-circle" cx="360" cy="360" r="28" fill="rgba(0,196,140,0.15)" stroke="#00C48C" stroke-width="2"/>
+          <circle cx="360" cy="360" r="18" fill="#00C48C" opacity="0.85"/>
+          <text x="360" y="365" text-anchor="middle" fill="#fff" font-size="8" font-weight="700" font-family="Poppins,sans-serif">NKANU W</text>
+        </g>
+        <g class="lga-node" data-lga="Oji River" data-status="stable" data-score="22" data-supply="83%" onclick="lgaClick(this)">
+          <circle class="lga-circle" cx="240" cy="400" r="26" fill="rgba(0,196,140,0.15)" stroke="#00C48C" stroke-width="2"/>
+          <circle cx="240" cy="400" r="17" fill="#00C48C" opacity="0.85"/>
+          <text x="240" y="405" text-anchor="middle" fill="#fff" font-size="8" font-weight="700" font-family="Poppins,sans-serif">OJI RIVER</text>
+        </g>
+        <g class="lga-node" data-lga="Awgu" data-status="limited" data-score="58" data-supply="42%" onclick="lgaClick(this)">
+          <circle class="lga-circle" cx="350" cy="430" r="26" fill="rgba(245,166,35,0.15)" stroke="#F5A623" stroke-width="2"/>
+          <circle cx="350" cy="430" r="17" fill="#F5A623" opacity="0.85"/>
+          <text x="350" y="435" text-anchor="middle" fill="#fff" font-size="8" font-weight="700" font-family="Poppins,sans-serif">AWGU</text>
+        </g>
+        <g class="lga-node" data-lga="Isi-Uzo" data-status="critical" data-score="79" data-supply="18%" onclick="lgaClick(this)">
+          <circle class="lga-circle" cx="500" cy="250" r="28" fill="rgba(229,62,62,0.15)" stroke="#E53E3E" stroke-width="2"/>
+          <circle cx="500" cy="250" r="18" fill="#E53E3E" opacity="0.85"/>
+          <text x="500" y="255" text-anchor="middle" fill="#fff" font-size="8" font-weight="700" font-family="Poppins,sans-serif">ISI-UZO</text>
+        </g>
+        <g class="lga-node" data-lga="Aninri" data-status="stable" data-score="30" data-supply="70%" onclick="lgaClick(this)">
+          <circle class="lga-circle" cx="460" cy="400" r="26" fill="rgba(0,196,140,0.15)" stroke="#00C48C" stroke-width="2"/>
+          <circle cx="460" cy="400" r="17" fill="#00C48C" opacity="0.85"/>
+          <text x="460" y="405" text-anchor="middle" fill="#fff" font-size="8" font-weight="700" font-family="Poppins,sans-serif">ANINRI</text>
+        </g>
+        <g class="lga-node" data-lga="Uzo-Uwani" data-status="limited" data-score="50" data-supply="50%" onclick="lgaClick(this)">
+          <circle class="lga-circle" cx="130" cy="330" r="26" fill="rgba(245,166,35,0.15)" stroke="#F5A623" stroke-width="2"/>
+          <circle cx="130" cy="330" r="17" fill="#F5A623" opacity="0.85"/>
+          <text x="130" y="335" text-anchor="middle" fill="#fff" font-size="8" font-weight="700" font-family="Poppins,sans-serif">UZO-UWANI</text>
+        </g>
+        <line x1="200" y1="300" x2="300" y2="170" stroke="rgba(15,82,186,0.25)" stroke-width="1.5" stroke-dasharray="4,4">
+          <animate attributeName="stroke-dashoffset" from="0" to="-50" dur="2s" repeatCount="indefinite"/>
+        </line>
+        <line x1="200" y1="300" x2="300" y2="280" stroke="rgba(15,82,186,0.25)" stroke-width="1.5" stroke-dasharray="4,4">
+          <animate attributeName="stroke-dashoffset" from="0" to="-50" dur="2.5s" repeatCount="indefinite"/>
+        </line>
+        <line x1="200" y1="300" x2="170" y2="160" stroke="rgba(15,82,186,0.20)" stroke-width="1" stroke-dasharray="3,4">
+          <animate attributeName="stroke-dashoffset" from="0" to="-40" dur="3s" repeatCount="indefinite"/>
+        </line>
+        <text x="350" y="50" text-anchor="middle" fill="rgba(15,82,186,0.5)" font-size="11" font-weight="700" font-family="Poppins,sans-serif" letter-spacing="2">ENUGU STATE</text>
+        <text x="350" y="64" text-anchor="middle" fill="rgba(15,82,186,0.3)" font-size="8" font-family="Poppins,sans-serif">Water Intelligence Network — 17 LGAs</text>
+      </svg>
+      <div style="position:absolute;bottom:16px;right:16px;background:rgba(255,255,255,0.9);border-radius:10px;padding:12px;font-size:11px;border:1px solid var(--sky-mid);backdrop-filter:blur(8px);">
+        <div style="font-weight:700;color:var(--ink);margin-bottom:6px;">Click any LGA for details</div>
+        <div style="color:var(--ink-60);">Lines showactive supply routes</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="hubs">
+  <div class="section-eyebrow">Decentralized Infrastructure</div>
+  <h2 class="section-title">Water Hub Management</h2>
+  <p class="section-sub">Live hub dashboards for tank levels, capacity status, and critical refill planning.</p>
+  <div class="hub-grid">
+    <div class="hub-card reveal">
+      <div class="hub-header">
+        <div><div class="hub-name">Uwani Central Hub</div><div class="hub-id">HUB-EN-0014 · Enugu South LGA</div></div>
+        <span class="status-badge status-green">Operational</span>
+      </div>
+      <div class="hub-meter">
+        <div class="hub-meter-label"><span>Tank Level</span><span>78%</span></div>
+        <div class="meter-bar"><div class="meter-fill fill-green" style="width:78%"></div></div>
+      </div>
+      <div class="hub-meta">
+        <div class="hub-meta-item"> Pop: 8,400</div>
+        <div class="hub-meta-item"> Cap: 50,000L</div>
+        <div class="hub-meta-item"> Refill: 09:00</div>
+        <div class="hub-meta-item"> Maint: 3 days</div>
+      </div>
+    </div>
+    <div class="hub-card reveal">
+      <div class="hub-header">
+        <div><div class="hub-name">Abakpa Main Hub</div><div class="hub-id">HUB-EN-0007 · Enugu East LGA</div></div>
+        <span class="status-badge status-yellow">Limited</span>
+      </div>
+      <div class="hub-meter">
+        <div class="hub-meter-label"><span>Tank Level</span><span>34%</span></div>
+        <div class="meter-bar"><div class="meter-fill fill-yellow" style="width:34%"></div></div>
+      </div>
+      <div class="hub-meta">
+        <div class="hub-meta-item"> Pop: 11,200</div>
+        <div class="hub-meta-item"> Cap: 80,000L</div>
+        <div class="hub-meta-item"> Refill: 14:00</div>
+        <div class="hub-meta-item"> Low supply</div>
+      </div>
+    </div>
+    <div class="hub-card reveal">
+      <div class="hub-header">
+        <div><div class="hub-name">Obiagu Hub 2</div><div class="hub-id">HUB-EN-0023 · Enugu North LGA</div></div>
+        <span class="status-badge status-red">Critical</span>
+      </div>
+      <div class="hub-meter">
+        <div class="hub-meter-label"><span>Tank Level</span><span>6%</span></div>
+        <div class="meter-bar"><div class="meter-fill fill-red" style="width:6%"></div></div>
+      </div>
+      <div class="hub-meta">
+        <div class="hub-meta-item"> Pop: 12,400</div>
+        <div class="hub-meta-item"> Cap: 60,000L</div>
+        <div class="hub-meta-item"> EMERGENCY</div>
+        <div class="hub-meta-item"> Tanker ETA: 1h</div>
+      </div>
+    </div>
+    <div class="hub-card reveal">
+      <div class="hub-header">
+        <div><div class="hub-name">Agbani Road Hub</div><div class="hub-id">HUB-EN-0031 · Nkanu West LGA</div></div>
+        <span class="status-badge status-green">Operational</span>
+      </div>
+      <div class="hub-meter">
+        <div class="hub-meter-label"><span>Tank Level</span><span>91%</span></div>
+        <div class="meter-bar"><div class="meter-fill fill-green" style="width:91%"></div></div>
+      </div>
+      <div class="hub-meta">
+        <div class="hub-meta-item"> Pop: 6,800</div>
+        <div class="hub-meta-item"> Cap: 40,000L</div>
+        <div class="hub-meta-item"> Refill: 07:00</div>
+        <div class="hub-meta-item"> Maint: 7 days</div>
+      </div>
+    </div>
+    <div class="hub-card reveal">
+      <div class="hub-header">
+        <div><div class="hub-name">New Haven Hub 3</div><div class="hub-id">HUB-EN-0019 · Enugu North LGA</div></div>
+        <span class="status-badge status-red">Offline</span>
+      </div>
+      <div class="hub-meter">
+        <div class="hub-meter-label"><span>Tank Level</span><span>0%</span></div>
+        <div class="meter-bar"><div class="meter-fill fill-red" style="width:0%"></div></div>
+      </div>
+      <div class="hub-meta">
+        <div class="hub-meta-item"> Pop: 9,100</div>
+        <div class="hub-meta-item"> Cap: 55,000L</div>
+        <div class="hub-meta-item"> Pump failure</div>
+        <div class="hub-meta-item"> ETA: 6h repair</div>
+      </div>
+    </div>
+    <div class="hub-card reveal">
+      <div class="hub-header">
+        <div><div class="hub-name">Independence Layout</div><div class="hub-id">HUB-EN-0008 · Enugu South LGA</div></div>
+        <span class="status-badge status-yellow">Limited</span>
+      </div>
+      <div class="hub-meter">
+        <div class="hub-meter-label"><span>Tank Level</span><span>47%</span></div>
+        <div class="meter-bar"><div class="meter-fill fill-yellow" style="width:47%"></div></div>
+      </div>
+      <div class="hub-meta">
+        <div class="hub-meta-item"> Pop: 14,200</div>
+        <div class="hub-meta-item"> Cap: 100,000L</div>
+        <div class="hub-meta-item"> Refill: 16:00</div>
+        <div class="hub-meta-item"> Tanker pending</div>
+      </div>
+    </div>
+  </div>
+  <div style="text-align:center;margin-top:32px;">
+    <a class="btn btn-ghost" href="reports.html">View Dashboard & Reports →</a>
+  </div>
+</section>
+
+<!-- DISPATCH ROUTE & FLEET TRACKING -->
+<section class="tanker-section" id="dispatch-routes" style="padding:96px 5vw;">
+  <div class="section-eyebrow">Smart Logistics</div>
+  <h2 class="section-title">Dispatch Routes</h2>
+  <p class="section-sub">Real-time dispatch prioritization by population impact, critical need levels, and reservoir supply status. The system continuously optimizes tanker routing.</p>
+
+  <div class="tanker-grid" style="margin-top:48px;">
+    <!-- Dispatch Queue (Left) -->
+    <div class="reveal">
+      <div style="font-family:var(--font-head);font-size:1rem;font-weight:700;color:#fff;margin-bottom:4px;"> Priority Dispatch Queue</div>
+      <div class="dispatch-queue">
+        <div class="dq-header">RANKED BY POPULATION IMPACT & CRITICALITY</div>
+        <div class="dq-item">
+          <div class="dq-rank">1</div>
+          <div class="dq-info">
+            <div class="dq-name">Abakpa Nike (E. South LGA)</div>
+            <div class="dq-detail">18,400 residents · No supply 36hrs · Hub EN-0007</div>
+          </div>
+          <div class="dq-priority dqp-critical">Critical</div>
+        </div>
+        <div class="dq-item">
+          <div class="dq-rank">2</div>
+          <div class="dq-info">
+            <div class="dq-name">GRA Phase 2 (E. North LGA)</div>
+            <div class="dq-detail">Healthcare hub · 48 beds · 2,100 daily patients</div>
+          </div>
+          <div class="dq-priority dqp-critical">Critical</div>
+        </div>
+        <div class="dq-item">
+          <div class="dq-rank">3</div>
+          <div class="dq-info">
+            <div class="dq-name">Independence Layout (E. South)</div>
+            <div class="dq-detail">Distribution center · 14,200 population · Hub EN-0008</div>
+          </div>
+          <div class="dq-priority dqp-high">High</div>
+        </div>
+        <div class="dq-item">
+          <div class="dq-rank">4</div>
+          <div class="dq-info">
+            <div class="dq-name">Uwani School Complex (E. South)</div>
+            <div class="dq-detail">1,200 students + staff · Education facility</div>
+          </div>
+          <div class="dq-priority dqp-high">High</div>
+        </div>
+        <div class="dq-item">
+          <div class="dq-rank">5</div>
+          <div class="dq-info">
+            <div class="dq-name">Enugu North Ward Assembly</div>
+            <div class="dq-detail">5,800 residents · Civic center refill</div>
+          </div>
+          <div class="dq-priority dqp-medium">Medium</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Active Routes & Fleet (Right) -->
+    <div class="reveal">
+      <div style="font-family:var(--font-head);font-size:1rem;font-weight:700;color:#fff;margin-bottom:4px;"> Active Routes & Fleet Status</div>
+      <div class="tanker-fleet">
+        <div class="fleet-header">
+          <span>ROUTE</span>
+          <span>ETA</span>
+        </div>
+        <div class="fleet-item">
+          <div class="fleet-info">
+            <div class="fleet-id">Route 1 · Tanker AQ-001 (15,000 L)</div>
+            <div class="fleet-route">Ninth Mile → Abakpa Nike Hub</div>
+            <div class="fleet-eta">Distance: 24 km</div>
+          </div>
+          <div class="fleet-status-dot fsd-enroute"></div>
+        </div>
+        <div class="fleet-item">
+          <div class="fleet-info">
+            <div class="fleet-id">Route 2 · Tanker AQ-003 (12,000 L)</div>
+            <div class="fleet-route">Oji River → GRA Phase 2</div>
+            <div class="fleet-eta">Distance: 18 km</div>
+          </div>
+          <div class="fleet-status-dot fsd-enroute"></div>
+        </div>
+        <div class="fleet-item">
+          <div class="fleet-info">
+            <div class="fleet-id">Route 3 · Tanker AQ-007 (15,000 L)</div>
+            <div class="fleet-route">Ninth Mile → Independence Layout</div>
+            <div class="fleet-eta">Distance: 31 km</div>
+          </div>
+          <div class="fleet-status-dot fsd-assigned"></div>
+        </div>
+        <div class="fleet-item">
+          <div class="fleet-info">
+            <div class="fleet-id">Route 4 · Tanker AQ-011 (10,000 L)</div>
+            <div class="fleet-route">Available for assignment</div>
+            <div class="fleet-eta">Base: 12 km from Ninth Mile</div>
+          </div>
+          <div class="fleet-status-dot fsd-available"></div>
+        </div>
+        <div class="fleet-item">
+          <div class="fleet-info">
+            <div class="fleet-id">Route 5 · Tanker AQ-015 (12,000 L)</div>
+            <div class="fleet-route">Oji River → Enugu North</div>
+            <div class="fleet-eta">Standby capacity</div>
+          </div>
+          <div class="fleet-status-dot fsd-available"></div>
+        </div>
+      </div>
+      <button class="btn btn-primary" style="width:100%;justify-content:center;padding:12px;margin-top:16px;background:var(--accent-teal);border:none;font-size:14px;" onclick="esinNotif('🗺️ Route optimization recalculated. 3 routes improved by avg 8 min ETA.','success')">
+         Optimize Routes Now
+      </button>
+    </div>
+  </div>
+</section>
+
+<section class="stress-section">
+  <div class="section-eyebrow">Intelligence system</div>
+  <h2 class="section-title">Water Stress Index</h2>
+  <p class="section-sub">Automatically computed stress scores across the state, helping hub managers prioritize maintenance and dispatch.</p>
+  <div class="stress-grid">
+    <div class="stress-card critical reveal">
+      <div class="stress-header">
+        <div><div class="stress-lga">Enugu East</div><div class="stress-ward">12 wards · 4 LGAs</div></div>
+        <div><div class="stress-score score-critical">85</div><div class="stress-label">Critical</div></div>
+      </div>
+      <div class="stress-bar-wrap"><div class="meter-bar"><div class="meter-fill fill-red" style="width:85%"></div></div></div>
+      <div class="stress-detail"><span class="stress-tag">High Density</span><span class="stress-tag">3 Outages/Week</span><span class="stress-tag">Tanker-Dependent</span></div>
+    </div>
+    <div class="stress-card critical reveal">
+      <div class="stress-header">
+        <div><div class="stress-lga">Enugu North</div><div class="stress-ward">9 wards · 3 LGAs</div></div>
+        <div><div class="stress-score score-critical">79</div><div class="stress-label">Critical</div></div>
+      </div>
+      <div class="stress-bar-wrap"><div class="meter-bar"><div class="meter-fill fill-red" style="width:79%"></div></div></div>
+      <div class="stress-detail"><span class="stress-tag">Hub Failures</span><span class="stress-tag">Low Pipeline</span><span class="stress-tag">Pop: 180k</span></div>
+    </div>
+    <div class="stress-card moderate reveal">
+      <div class="stress-header">
+        <div><div class="stress-lga">Nkanu East</div><div class="stress-ward">7 wards</div></div>
+        <div><div class="stress-score score-moderate">62</div><div class="stress-label">Moderate</div></div>
+      </div>
+      <div class="stress-bar-wrap"><div class="meter-bar"><div class="meter-fill fill-yellow" style="width:62%"></div></div></div>
+      <div class="stress-detail"><span class="stress-tag">Seasonal Dip</span><span class="stress-tag">Demand Spike</span></div>
+    </div>
+    <div class="stress-card moderate reveal">
+      <div class="stress-header">
+        <div><div class="stress-lga">Awgu</div><div class="stress-ward">6 wards</div></div>
+        <div><div class="stress-score score-moderate">58</div><div class="stress-label">Moderate</div></div>
+      </div>
+      <div class="stress-bar-wrap"><div class="meter-bar"><div class="meter-fill fill-yellow" style="width:58%"></div></div></div>
+      <div class="stress-detail"><span class="stress-tag">Rural Access</span><span class="stress-tag">Infrastructure Gap</span></div>
+    </div>
+    <div class="stress-card stable reveal">
+      <div class="stress-header">
+        <div><div class="stress-lga">Enugu South</div><div class="stress-ward">8 wards</div></div>
+        <div><div class="stress-score score-stable">32</div><div class="stress-label">Stable</div></div>
+      </div>
+      <div class="stress-bar-wrap"><div class="meter-bar"><div class="meter-fill fill-green" style="width:32%"></div></div></div>
+      <div class="stress-detail"><span class="stress-tag">PPP Coverage</span><span class="stress-tag">Hub Operational</span></div>
+    </div>
+    <div class="stress-card stable reveal">
+      <div class="stress-header">
+        <div><div class="stress-lga">Oji River</div><div class="stress-ward">5 wards</div></div>
+        <div><div class="stress-score score-stable">22</div><div class="stress-label">Stable</div></div>
+      </div>
+      <div class="stress-bar-wrap"><div class="meter-bar"><div class="meter-fill fill-green" style="width:22%"></div></div></div>
+      <div class="stress-detail"><span class="stress-tag">Reservoir Access</span><span class="stress-tag">Low Demand</span></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <div class="nav-brand" style="text-decoration:none;display:inline-flex;margin-bottom:8px;">
+        <span class="nav-wordmark" style="color:#fff;margin-left:10px;">E<span>SIN</span></span>
+      </div>
+      <p>Water hub operations, live state mapping, and stress filtering for field teams and local managers.</p>
+    </div>
+    <div class="footer-links">
+      <div class="footer-col">
+        <h5>Navigation</h5>
+        <a href="index.html">Home</a>
+        <a href="reports.html">Reports</a>
+        <a href="tankers.html">Tankers</a>
+      </div>
+      <div class="footer-col">
+        <h5>Resources</h5>
+        <a href="#map">Live Map</a>
+        <a href="#hubs">Hub Portfolio</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2026 ESIN — Enugu Smart Intelligence Network.</div>
+    <div class="footer-tags">
+      <span class="footer-tag">Mapping</span>
+      <span class="footer-tag">Hubs</span>
+      <span class="footer-tag">Operations</span>
+    </div>
+  </div>
+</footer>
+
+<div class="notif" id="notifEl">
+  <span class="notif-icon" id="notifIcon">✅</span>
+  <span id="notifMsg">Action completed</span>
+</div>
+
+<div class="tooltip-map" id="mapTooltip"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

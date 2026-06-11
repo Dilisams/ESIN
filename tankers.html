@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Tankers — ESIN Water Network</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<nav id="mainNav">
+  <a href="index.html" class="nav-brand">
+    <span class="nav-wordmark">E<span>SIN</span></span>
+  </a>
+  <button id="navToggle" class="nav-toggle" aria-label="Open menu"><span></span></button>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="reports.html">Reports</a>
+    <a href="hubs.html">Water Hubs</a>
+    <a href="tankers.html">Tankers</a>
+  </div>
+  <div class="nav-cta">
+    <a class="btn btn-primary btn-sm" href="#ppp">PPP Network</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-orb hero-orb-1"></div>
+  <div class="hero-orb hero-orb-2"></div>
+
+  <div class="hero-badge">
+    <span class="badge-dot"></span>
+    Tanker Tracking & Response
+  </div>
+
+  <h1 class="hero-headline">
+    Manage Tankers<br>and Emergency Dispatch
+  </h1>
+  <p class="hero-sub">
+    Monitor active tanker supplies, route dispatches, and keep critical zones moving during shortages.
+  </p>
+  <div class="hero-actions">
+    <a class="btn btn-primary btn-lg" href="#ppp">View PPP Fleet</a>
+    <a class="btn btn-ghost btn-lg" href="#emergency">Emergency Response</a>
+  </div>
+</section>
+
+<section class="ppp-section" id="ppp">
+  <div class="section-eyebrow">Public-Private Partnership</div>
+  <h2 class="section-title">Registered Tanker & Supplier Network</h2>
+  <p class="section-sub">Monitor vetted tanker operators and reservoir partners as part of the state distribution network.</p>
+  <div class="supplier-grid">
+    <div class="supplier-card reveal">
+      <div class="supplier-name">Ninth Mile Reservoir Ltd</div>
+      <div class="supplier-type">Primary Reservoir</div>
+      <div class="supplier-stats">
+        <div class="s-stat"><div class="s-stat-val">96%</div><div class="s-stat-label">Capacity</div></div>
+        <div class="s-stat"><div class="s-stat-val">4.2M L</div><div class="s-stat-label">Daily Output</div></div>
+        <div class="s-stat"><div class="s-stat-val">12</div><div class="s-stat-label">Hubs Served</div></div>
+      </div>
+      <div class="compliance-bar">
+        <div class="compliance-label"><span>Compliance Score</span><span style="color:var(--accent-green);font-weight:700;">94%</span></div>
+        <div class="meter-bar"><div class="meter-fill fill-green" style="width:94%"></div></div>
+      </div>
+    </div>
+    <div class="supplier-card reveal">
+      <div class="supplier-name">AquaFresh Tankers</div>
+      <div class="supplier-type">Tanker Operator</div>
+      <div class="supplier-stats">
+        <div class="s-stat"><div class="s-stat-val">23</div><div class="s-stat-label">Active Tankers</div></div>
+        <div class="s-stat"><div class="s-stat-val">890,000 L</div><div class="s-stat-label">Daily Delivery</div></div>
+        <div class="s-stat"><div class="s-stat-val">8</div><div class="s-stat-label">Zones Covered</div></div>
+      </div>
+      <div class="compliance-bar">
+        <div class="compliance-label"><span>Compliance Score</span><span style="color:var(--accent-yellow);font-weight:700;">71%</span></div>
+        <div class="meter-bar"><div class="meter-fill fill-yellow" style="width:71%"></div></div>
+      </div>
+    </div>
+    <div class="supplier-card reveal">
+      <div class="supplier-name">Enugu Borehole Consortium</div>
+      <div class="supplier-type">Borehole Network</div>
+      <div class="supplier-stats">
+        <div class="s-stat"><div class="s-stat-val">47</div><div class="s-stat-label">Active Boreholes</div></div>
+        <div class="s-stat"><div class="s-stat-val">1.1M L</div><div class="s-stat-label">Daily Output</div></div>
+        <div class="s-stat"><div class="s-stat-val">19</div><div class="s-stat-label">Wards Served</div></div>
+      </div>
+      <div class="compliance-bar">
+        <div class="compliance-label"><span>Compliance Score</span><span style="color:var(--accent-green);font-weight:700;">88%</span></div>
+        <div class="meter-bar"><div class="meter-fill fill-green" style="width:88%"></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="emergency-section" id="emergency">
+  <div class="section-eyebrow" style="color:var(--accent-red);">Emergency Response</div>
+  <h2 class="section-title">Tanker Dispatch Alerts</h2>
+  <div class="alert-banner">
+    <div class="alert-content">
+      <div class="alert-title">Critical Tanker Movement</div>
+      <div class="alert-desc">AquaFresh Tankers is coordinating emergency supply to Obiagu Hub 2 and GRA Phase 2. The live tracker shows 5 tankers are en route from Ninth Mile Reservoir.</div>
+    </div>
+    <div class="alert-actions">
+      <button class="btn btn-primary btn-sm" onclick="showNotif(' Tanker tracking updated. ETA alignment active.','success')">Track Updates</button>
+    </div>
+  </div>
+</section>
+
+<section class="meter-section">
+  <div class="section-eyebrow">Dispatch Overview</div>
+  <h2 class="section-title">Tanker Fleet Monitoring</h2>
+  <p class="section-sub">Review tanker delivery status, route performance, and operational readiness across the network.</p>
+  <div class="meter-demo">
+    <div class="meter-display">
+      <h3>Active Tankers</h3>
+      <div class="meter-reading">
+        <span id="meterCount">0</span>
+        <span class="meter-unit">units</span>
+      </div>
+      <div style="margin-top:6px;font-size:11px;color:rgba(255,255,255,0.4);">AquaFresh fleet status and tracking snapshot</div>
+      <div style="margin-top:20px;"><canvas id="meterChart" height="100"></canvas></div>
+      <div style="margin-top:12px;display:flex;gap:10px;flex-wrap:wrap;">
+        <span style="background:rgba(0,196,140,0.2);color:#00C48C;padding:4px 10px;border-radius:99px;font-size:11px;font-weight:700;">✓ On Route</span>
+        <span style="background:rgba(15,82,186,0.2);color:#7eb8ff;padding:4px 10px;border-radius:99px;font-size:11px;font-weight:700;">Live Tracking</span>
+      </div>
+    </div>
+    <div class="meter-details">
+      <div style="font-family:var(--font-head);font-size:1rem;font-weight:700;color:#fff;margin-bottom:6px;">Fleet Summary</div>
+      <div class="meter-row"><span class="m-key">Tankers Active</span><span class="m-val">23</span></div>
+      <div class="meter-row"><span class="m-key">Deliveries Today</span><span class="m-val">18</span></div>
+      <div class="meter-row"><span class="m-key">Average ETA</span><span class="m-val">28 min</span></div>
+      <div class="meter-row"><span class="m-key">Critical Routes</span><span class="m-val red">3 active</span></div>
+      <div class="meter-row"><span class="m-key">Reservoir Supply</span><span class="m-val green">91%</span></div>
+      <div class="meter-row"><span class="m-key">Compliance</span><span class="m-val">71%</span></div>
+      <button class="btn btn-primary" style="margin-top:16px;width:100%;justify-content:center;" onclick="showNotif('📡 Tanker fleet telemetry refreshed.','info')">Refresh Tracker</button>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURE 2: TANKER REQUEST SYSTEM-->
+<section class="tanker-section" id="tanker-request">
+  <div class="section-eyebrow">Emergency Logistics</div>
+  <h2 class="section-title">Request Emergency<br>Tanker Supply</h2>
+  <p class="section-sub">Communities facing critical water shortages can request emergency tanker dispatch. The AI system ranks all requests by population impact and assigns nearest available tankers.</p>
+
+  <div class="tanker-grid">
+    <!-- Tanker Request Form (Left) -->
+    <div class="tanker-form-card reveal">
+      <div class="form-section-title">Request Type</div>
+      <div class="request-type-grid">
+        <div class="rt-opt" onclick="selectRT(this)">
+          <span>Community</span>
+        </div>
+        <div class="rt-opt" onclick="selectRT(this)">
+          <span>Hospital</span>
+        </div>
+        <div class="rt-opt" onclick="selectRT(this)">
+          <span>School</span>
+        </div>
+        <div class="rt-opt rt-selected" onclick="selectRT(this)">
+          <span>Hub</span>
+        </div>
+      </div>
+
+      <div class="form-section-title">Urgency Level</div>
+      <div class="need-level-grid" id="needLevelGrid">
+        <div class="nl-opt nl-low" onclick="selectNL(this)">Low</div>
+        <div class="nl-opt nl-medium nl-selected" onclick="selectNL(this)">Medium</div>
+        <div class="nl-opt nl-high" onclick="selectNL(this)">High</div>
+        <div class="nl-opt nl-emergency" onclick="selectNL(this)">Emergency</div>
+      </div>
+
+      <div class="form-section-title">Location Details</div>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">Community / Ward</label>
+          <input class="form-input" type="text" placeholder="e.g. Abakpa Nike Ward 3"/>
+        </div>
+        <div class="form-group">
+          <label class="form-label">LGA</label>
+          <select class="form-input">
+            <option>Enugu South</option>
+            <option>Enugu North</option>
+            <option>Enugu East</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">GPS Coordinates (Optional)</label>
+        <button class="gps-btn" id="tankerGpsBtn" onclick="detectTankerGPS()">
+          <span> Detect Location</span>
+        </button>
+      </div>
+
+      <div class="form-section-title">Requestor Information</div>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">Your Name</label>
+          <input class="form-input" type="text" placeholder="Community Leader Name"/>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Contact Number</label>
+          <input class="form-input" type="tel" placeholder="+234..."/>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Upload Evidence</label>
+        <div class="upload-area">
+          <div class="upload-icon">📸</div>
+          <p><strong>Click to upload</strong> or drag files here</p>
+          <p style="color:rgba(255,255,255,0.25);">Photos of empty taps or tanks (optional)</p>
+        </div>
+      </div>
+
+      <button class="btn btn-primary" style="width:100%;justify-content:center;padding:14px;font-size:15px;background:var(--accent-teal);border:none;margin-top:20px;" onclick="submitTankerRequest()">
+         Submit Tanker Request
+      </button>
+    </div>
+
+    <!-- Tanker Dashboard (Right) -->
+    <div class="tanker-dashboard-panel">
+      <!-- AI Dispatch Queue -->
+      <div class="reveal">
+        <div class="tdp-header">Priority Dispatch Queue</div>
+        <div class="dispatch-queue">
+          <div class="dq-header">RANKED BY POPULATION IMPACT</div>
+          <div class="dq-item">
+            <div class="dq-rank">1</div>
+            <div class="dq-info">
+              <div class="dq-name">Abakpa Nike Community</div>
+              <div class="dq-detail">18,400 residents · No supply 36hrs</div>
+            </div>
+            <div class="dq-priority dqp-critical">Critical</div>
+          </div>
+          <div class="dq-item">
+            <div class="dq-rank">2</div>
+            <div class="dq-info">
+              <div class="dq-name">GRA Phase 2 Healthcare Hub</div>
+              <div class="dq-detail">Hospital · 48 beds</div>
+            </div>
+            <div class="dq-priority dqp-critical">Critical</div>
+          </div>
+          <div class="dq-item">
+            <div class="dq-rank">3</div>
+            <div class="dq-info">
+              <div class="dq-name">Uwani Community School</div>
+              <div class="dq-detail">1,200 students · Education</div>
+            </div>
+            <div class="dq-priority dqp-high">High</div>
+          </div>
+          <div class="dq-item">
+            <div class="dq-rank">4</div>
+            <div class="dq-info">
+              <div class="dq-name">Independence Layout Hub</div>
+              <div class="dq-detail">Distribution center · 2.5M L/day</div>
+            </div>
+            <div class="dq-priority dqp-high">High</div>
+          </div>
+          <div class="dq-item">
+            <div class="dq-rank">5</div>
+            <div class="dq-info">
+              <div class="dq-name">Enugu North Ward Assembly</div>
+              <div class="dq-detail">5,800 residents</div>
+            </div>
+            <div class="dq-priority dqp-medium">Medium</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Active Tanker Fleet -->
+      <div class="reveal" style="margin-top:24px;">
+        <div class="tdp-header"> Active Fleet Assignments</div>
+        <div class="tanker-fleet">
+          <div class="fleet-header">
+            <span>VEHICLE</span>
+            <span>STATUS</span>
+          </div>
+          <div class="fleet-item">
+            <div class="fleet-info">
+              <div class="fleet-id">AQ-001 · 15,000 L</div>
+              <div class="fleet-route">Abakpa Nike → 4 km</div>
+              <div class="fleet-eta">ETA: 22 min</div>
+            </div>
+            <div class="fleet-status-dot fsd-enroute"></div>
+          </div>
+          <div class="fleet-item">
+            <div class="fleet-info">
+              <div class="fleet-id">AQ-003 · 12,000 L</div>
+              <div class="fleet-route">GRA Phase 2 → 6 km</div>
+              <div class="fleet-eta">ETA: 31 min</div>
+            </div>
+            <div class="fleet-status-dot fsd-enroute"></div>
+          </div>
+          <div class="fleet-item">
+            <div class="fleet-info">
+              <div class="fleet-id">AQ-007 · 15,000 L</div>
+              <div class="fleet-route">Uwani School → 8 km</div>
+              <div class="fleet-eta">ETA: 38 min</div>
+            </div>
+            <div class="fleet-status-dot fsd-assigned"></div>
+          </div>
+          <div class="fleet-item">
+            <div class="fleet-info">
+              <div class="fleet-id">AQ-012 · 10,000 L</div>
+              <div class="fleet-route">Available</div>
+              <div class="fleet-eta">5.2 km from hub</div>
+            </div>
+            <div class="fleet-status-dot fsd-available"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!--TRACKING MAP -->
+<section class="tanker-map-section" id="tanker-map">
+  <div class="section-eyebrow reveal">Real-Time Operations</div>
+  <h2 class="section-title reveal">Live Tanker<br>Tracker Map</h2>
+  <p class="section-sub reveal">GPS-enabled real-time map showing all active tanker movements, critical demand zones, and delivery status across Enugu State.</p>
+
+  <div class="tanker-map-container reveal">
+    <div class="tanker-map-header">
+      <span class="tanker-map-title">Enugu State Real-Time Dispatch Map</span>
+      <div class="tanker-map-legend">
+        <div class="tml-item">
+          <div class="tml-dot" style="background:#00C48C;box-shadow:0 0 8px rgba(0,196,140,0.6);"></div>
+          <span>En Route</span>
+        </div>
+        <div class="tml-item">
+          <div class="tml-dot" style="background:#FFD700;"></div>
+          <span>Delivering</span>
+        </div>
+        <div class="tml-item">
+          <div class="tml-dot" style="background:#FC5C65;"></div>
+          <span>Critical Zone</span>
+        </div>
+        <div class="tml-item">
+          <div class="tml-dot" style="background:#4ECDC4;"></div>
+          <span>Water Source</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="tanker-svg-wrap">
+      <svg width="100%" height="350" viewBox="0 0 600 350" style="background:linear-gradient(135deg,#f0f6ff,#e8efff);border-radius:8px;">
+        <!-- outlinee -->
+        <defs>
+          <filter id="glow">
+            <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+            <feMerge>
+              <feMergeNode in="coloredBlur"/>
+              <feMergeNode in="SourceGraphic"/>
+            </feMerge>
+          </filter>
+          <style>
+            .zone-critical { animation: pulse 2s ease-in-out infinite; }
+            @keyframes pulse {
+              0%, 100% { r: 45px; opacity: 0.8; }
+              50% { r: 65px; opacity: 0.3; }
+            }
+          </style>
+        </defs>
+
+        <!-- S-->
+        <polygon points="50,80 150,60 200,100 250,90 300,70 350,100 400,80 450,120 480,200 460,280 350,300 200,280 80,240" fill="none" stroke="#0F52BA" stroke-width="2" opacity="0.3"/>
+
+        <!-- Zones label -->
+        <text x="80" y="30" font-family="Poppins" font-size="14" font-weight="700" fill="#0F52BA">Enugu State</text>
+
+        <!-- Water Sources -->
+        <circle cx="100" cy="180" r="12" fill="#4ECDC4" opacity="0.8" filter="url(#glow)"/>
+        <text x="85" y="200" font-family="Poppins" font-size="10" fill="#1a1a1a">Ninth Mile</text>
+
+        <circle cx="480" cy="150" r="12" fill="#4ECDC4" opacity="0.8" filter="url(#glow)"/>
+        <text x="455" y="170" font-family="Poppins" font-size="10" fill="#1a1a1a">Oji R.</text>
+
+        <!-- Critical demand zones -->
+        <circle class="zone-critical" cx="240" cy="140" r="45" fill="#FC5C65" opacity="0.5"/>
+        <circle cx="240" cy="140" r="8" fill="#FC5C65"/>
+        <text x="200" y="155" font-family="Poppins" font-size="10" font-weight="700" fill="#8B0000">Abakpa Nike</text>
+
+        <circle class="zone-critical" cx="340" cy="220" r="40" fill="#FC5C65" opacity="0.5"/>
+        <circle cx="340" cy="220" r="8" fill="#FC5C65"/>
+        <text x="310" y="240" font-family="Poppins" font-size="10" font-weight="700" fill="#8B0000">GRA Ph.2</text>
+
+        <!-- Active tanker routes -->
+        <path d="M 100 180 Q 170 160 240 140" stroke="#00C48C" stroke-width="3" fill="none" stroke-dasharray="5,5" opacity="0.6"/>
+        <circle cx="180" cy="155" r="6" fill="#00C48C" opacity="0.8">
+          <animate attributeName="cx" from="100" to="240" dur="8s" repeatCount="indefinite"/>
+          <animate attributeName="cy" from="180" to="140" dur="8s" repeatCount="indefinite"/>
+        </circle>
+        <text x="185" y="145" font-family="Poppins" font-size="9" fill="#00C48C" font-weight="700">AQ-001</text>
+
+        <path d="M 480 150 Q 410 180 340 220" stroke="#00C48C" stroke-width="3" fill="none" stroke-dasharray="5,5" opacity="0.6"/>
+        <circle cx="410" cy="180" r="6" fill="#00C48C" opacity="0.8">
+          <animate attributeName="cx" from="480" to="340" dur="10s" repeatCount="indefinite"/>
+          <animate attributeName="cy" from="150" to="220" dur="10s" repeatCount="indefinite"/>
+        </circle>
+        <text x="415" y="175" font-family="Poppins" font-size="9" fill="#00C48C" font-weight="700">AQ-003</text>
+
+        <!-- Hubs (light blue) -->
+        <circle cx="290" cy="280" r="8" fill="#7eb8ff" opacity="0.9"/>
+        <text x="265" y="305" font-family="Poppins" font-size="9" fill="#1e40af" font-weight="600">Independence Layout Hub</text>
+
+        <circle cx="180" cy="320" r="8" fill="#7eb8ff" opacity="0.9"/>
+        <text x="140" y="340" font-family="Poppins" font-size="9" fill="#1e40af" font-weight="600">Enugu North Hub</text>
+      </svg>
+
+      <div class="tanker-svg-overlay">
+        <div style="font-weight:700;margin-bottom:4px;">Last Updated</div>
+        <div style="color:#0F52BA;font-weight:600;">2 min ago</div>
+        <div style="font-size:10px;color:var(--ink-60);margin-top:6px;">23 tankers active</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <div class="nav-brand" style="text-decoration:none;display:inline-flex;margin-bottom:8px;">
+
+        <span class="nav-wordmark" style="color:#fff;margin-left:10px;">E<span>SIN</span></span>
+      </div>
+      <p>Tankers, tracking, and emergency dispatch visibility for the Enugu State water supply network.</p>
+    </div>
+    <div class="footer-links">
+      <div class="footer-col">
+        <h5>Navigation</h5>
+        <a href="index.html">Home</a>
+        <a href="reports.html">Reports</a>
+        <a href="hubs.html">Water Hubs</a>
+      </div>
+      <div class="footer-col">
+        <h5>Fleet</h5>
+        <a href="#ppp">PPP Operators</a>
+        <a href="#emergency">Dispatch Alerts</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2026 ESIN — Enugu Smart Intelligence Network.</div>
+    <div class="footer-tags">
+      <span class="footer-tag">Tankers</span>
+      <span class="footer-tag">Dispatch</span>
+      <span class="footer-tag">Live Data</span>
+    </div>
+  </div>
+</footer>
+
+<div class="notif" id="notifEl">
+  <span class="notif-icon" id="notifIcon">✅</span>
+  <span id="notifMsg">Action completed</span>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
