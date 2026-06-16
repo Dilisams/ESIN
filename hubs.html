@@ -166,6 +166,185 @@
       </div>
     </div>
   </div>
+  <!-- WATER DISTRIBUTION TIMETABLE -->
+<section style="padding:64px 5vw 0;">
+  <div class="section-eyebrow">Release Schedule</div>
+  <h2 class="section-title">Water Distribution Timetable</h2>
+  <p class="section-sub">Scheduled release days, times, and volumes across active community hubs. Citizens are notified before each release.</p>
+
+  <div class="wb-wrap">
+    <div class="wb-header">
+      <div>
+        <div class="wb-sub">Week of 16–22 June 2026 · 3 active hubs</div>
+      </div>
+      <div class="wb-legend">
+        <div class="wbl"><div class="wbl-dot dot-released"></div>Released</div>
+        <div class="wbl"><div class="wbl-dot dot-inprogress"></div>In progress</div>
+        <div class="wbl"><div class="wbl-dot dot-scheduled"></div>Scheduled</div>
+        <div class="wbl"><div class="wbl-dot dot-completed"></div>Completed</div>
+      </div>
+    </div>
+
+    <div class="week-summary">
+      <div class="ws-card">
+        <div class="ws-label">Releases this week</div>
+        <div class="ws-val">9</div>
+        <div class="ws-sub">3 per hub</div>
+      </div>
+      <div class="ws-card">
+        <div class="ws-label">Hubs active</div>
+        <div class="ws-val">3</div>
+        <div class="ws-sub">Abakpa · Uwani · Emene</div>
+      </div>
+      <div class="ws-card">
+        <div class="ws-label">Est. volume</div>
+        <div class="ws-val">585k L</div>
+        <div class="ws-sub">Across all hubs</div>
+      </div>
+      <div class="ws-card">
+        <div class="ws-label">Population covered</div>
+        <div class="ws-val">32,000+</div>
+        <div class="ws-sub">Residents</div>
+      </div>
+    </div>
+
+    <div class="cycle-note">
+      ℹ️ Each hub releases water every 2–3 days. Citizens are notified in advance to collect and store water for the next cycle.
+    </div>
+
+    <div class="area-tabs">
+      <button class="atab active" onclick="filterArea('all',this)">All hubs</button>
+      <button class="atab" onclick="filterArea('abakpa',this)">Abakpa hub</button>
+      <button class="atab" onclick="filterArea('uwani',this)">Uwani hub</button>
+      <button class="atab" onclick="filterArea('emene',this)">Emene hub</button>
+    </div>
+
+    <div class="schedule-grid" id="scheduleGrid">
+
+      <!-- ABAKPA HUB -->
+      <div class="area-card" data-area="abakpa">
+        <div class="ac-head">
+          <div>
+            <div class="ac-name">Abakpa main hub</div>
+            <div class="ac-lga">HUB-EN-0007 · Enugu East LGA</div>
+          </div>
+          <span class="ac-status-pill pill-active">Active</span>
+        </div>
+        <div class="ac-meta">
+          <div class="ac-meta-item"><span class="ac-meta-label">Capacity</span><span class="ac-meta-val">80,000 L</span></div>
+          <div class="ac-meta-item"><span class="ac-meta-label">Population</span><span class="ac-meta-val">11,200</span></div>
+          <div class="ac-meta-item"><span class="ac-meta-label">Cycle</span><span class="ac-meta-val">Every 2 days</span></div>
+          <div class="ac-meta-item"><span class="ac-meta-label">Hub level</span><span class="ac-meta-val">34%</span></div>
+        </div>
+        <div class="sl-item">
+          <div class="sl-day-col"><div class="sl-day">Mon</div><div class="sl-date">Jun 16</div></div>
+          <div class="sl-time-col"><div class="sl-time">07:00</div></div>
+          <div class="sl-bar-col"><div class="sl-bar-wrap"><div class="sl-bar bar-done" style="width:100%"></div></div><div class="sl-duration">4 hrs · 80,000 L released</div></div>
+          <div class="sl-vol">80k L</div>
+          <div class="sl-check check-done">✓</div>
+        </div>
+        <div class="sl-item">
+          <div class="sl-day-col"><div class="sl-day">Wed</div><div class="sl-date">Jun 18</div></div>
+          <div class="sl-time-col"><div class="sl-time">07:00</div></div>
+          <div class="sl-bar-col"><div class="sl-bar-wrap"><div class="sl-bar bar-active" style="width:60%"></div></div><div class="sl-duration">4 hrs · Release in progress</div></div>
+          <div class="sl-vol">~48k L</div>
+          <div class="sl-check check-active">▶</div>
+        </div>
+        <div class="sl-item">
+          <div class="sl-day-col"><div class="sl-day">Fri</div><div class="sl-date">Jun 20</div></div>
+          <div class="sl-time-col"><div class="sl-time">07:00</div></div>
+          <div class="sl-bar-col"><div class="sl-bar-wrap"><div class="sl-bar bar-scheduled" style="width:0%"></div></div><div class="sl-duration">Scheduled · 4 hrs</div></div>
+          <div class="sl-vol">80k L</div>
+          <div class="sl-check check-scheduled">◷</div>
+        </div>
+        <div class="sl-item">
+          <div class="sl-day-col"><div class="sl-day">Sun</div><div class="sl-date">Jun 22</div></div>
+          <div class="sl-time-col"><div class="sl-time">07:00</div></div>
+          <div class="sl-bar-col"><div class="sl-bar-wrap"><div class="sl-bar bar-scheduled" style="width:0%"></div></div><div class="sl-duration">Scheduled · 4 hrs</div></div>
+          <div class="sl-vol">80k L</div>
+          <div class="sl-check check-scheduled">◷</div>
+        </div>
+      </div>
+
+      <!-- UWANI HUB -->
+      <div class="area-card" data-area="uwani">
+        <div class="ac-head">
+          <div>
+            <div class="ac-name">Uwani central hub</div>
+            <div class="ac-lga">HUB-EN-0014 · Enugu South LGA</div>
+          </div>
+          <span class="ac-status-pill pill-active">Active</span>
+        </div>
+        <div class="ac-meta">
+          <div class="ac-meta-item"><span class="ac-meta-label">Capacity</span><span class="ac-meta-val">50,000 L</span></div>
+          <div class="ac-meta-item"><span class="ac-meta-label">Population</span><span class="ac-meta-val">8,400</span></div>
+          <div class="ac-meta-item"><span class="ac-meta-label">Cycle</span><span class="ac-meta-val">Every 2 days</span></div>
+          <div class="ac-meta-item"><span class="ac-meta-label">Hub level</span><span class="ac-meta-val">78%</span></div>
+        </div>
+        <div class="sl-item">
+          <div class="sl-day-col"><div class="sl-day">Tue</div><div class="sl-date">Jun 17</div></div>
+          <div class="sl-time-col"><div class="sl-time">06:30</div></div>
+          <div class="sl-bar-col"><div class="sl-bar-wrap"><div class="sl-bar bar-done" style="width:100%"></div></div><div class="sl-duration">3 hrs · 50,000 L released</div></div>
+          <div class="sl-vol">50k L</div>
+          <div class="sl-check check-done">✓</div>
+        </div>
+        <div class="sl-item">
+          <div class="sl-day-col"><div class="sl-day">Thu</div><div class="sl-date">Jun 19</div></div>
+          <div class="sl-time-col"><div class="sl-time">06:30</div></div>
+          <div class="sl-bar-col"><div class="sl-bar-wrap"><div class="sl-bar bar-scheduled" style="width:0%"></div></div><div class="sl-duration">Scheduled · 3 hrs</div></div>
+          <div class="sl-vol">50k L</div>
+          <div class="sl-check check-scheduled">◷</div>
+        </div>
+        <div class="sl-item">
+          <div class="sl-day-col"><div class="sl-day">Sat</div><div class="sl-date">Jun 21</div></div>
+          <div class="sl-time-col"><div class="sl-time">06:30</div></div>
+          <div class="sl-bar-col"><div class="sl-bar-wrap"><div class="sl-bar bar-scheduled" style="width:0%"></div></div><div class="sl-duration">Scheduled · 3 hrs</div></div>
+          <div class="sl-vol">50k L</div>
+          <div class="sl-check check-scheduled">◷</div>
+        </div>
+      </div>
+
+      <!-- EMENE HUB -->
+      <div class="area-card" data-area="emene">
+        <div class="ac-head">
+          <div>
+            <div class="ac-name">Emene industrial hub</div>
+            <div class="ac-lga">HUB-EN-0029 · Enugu East LGA</div>
+          </div>
+          <span class="ac-status-pill pill-pending">Refilling</span>
+        </div>
+        <div class="ac-meta">
+          <div class="ac-meta-item"><span class="ac-meta-label">Capacity</span><span class="ac-meta-val">60,000 L</span></div>
+          <div class="ac-meta-item"><span class="ac-meta-label">Population</span><span class="ac-meta-val">12,600</span></div>
+          <div class="ac-meta-item"><span class="ac-meta-label">Cycle</span><span class="ac-meta-val">Every 3 days</span></div>
+          <div class="ac-meta-item"><span class="ac-meta-label">Hub level</span><span class="ac-meta-val">22%</span></div>
+        </div>
+        <div class="sl-item">
+          <div class="sl-day-col"><div class="sl-day">Sun</div><div class="sl-date">Jun 15</div></div>
+          <div class="sl-time-col"><div class="sl-time">08:00</div></div>
+          <div class="sl-bar-col"><div class="sl-bar-wrap"><div class="sl-bar bar-done" style="width:100%"></div></div><div class="sl-duration">5 hrs · 60,000 L released</div></div>
+          <div class="sl-vol">60k L</div>
+          <div class="sl-check check-done">✓</div>
+        </div>
+        <div class="sl-item">
+          <div class="sl-day-col"><div class="sl-day">Wed</div><div class="sl-date">Jun 18</div></div>
+          <div class="sl-time-col"><div class="sl-time">08:00</div></div>
+          <div class="sl-bar-col"><div class="sl-bar-wrap"><div class="sl-bar bar-pending" style="width:30%"></div></div><div class="sl-duration">Refilling now · est. ready 14:00</div></div>
+          <div class="sl-vol">60k L</div>
+          <div class="sl-check check-pending">↻</div>
+        </div>
+        <div class="sl-item">
+          <div class="sl-day-col"><div class="sl-day">Sat</div><div class="sl-date">Jun 21</div></div>
+          <div class="sl-time-col"><div class="sl-time">08:00</div></div>
+          <div class="sl-bar-col"><div class="sl-bar-wrap"><div class="sl-bar bar-scheduled" style="width:0%"></div></div><div class="sl-duration">Scheduled · 5 hrs</div></div>
+          <div class="sl-vol">60k L</div>
+          <div class="sl-check check-scheduled">◷</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
 </section>
 
 <section id="hubs">
